@@ -64,6 +64,17 @@ $config['ci_bootstrap'] = array(
 			'url'		=> '',
 			'icon'		=> 'fa fa-home',
 		),
+		'record'  => array(
+			'name'		=> 'Record',
+			'url'		=> 'record',
+			'icon'		=> 'fa fa-apple',
+			'children'	=> array(
+				'Objects'		=> 'object',
+				'Categorys'		=> 'category',
+				'Sub-Categorys'	=> 'category/sub_category',
+				'Transactions'	=> 'transaction'
+			)	
+		),
 		'user' => array(
 			'name'		=> 'Users',
 			'url'		=> 'user',

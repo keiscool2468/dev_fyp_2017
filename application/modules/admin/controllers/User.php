@@ -36,6 +36,7 @@ class User extends Admin_Controller {
 		$this->render_crud();
 	}
 
+
 	// Create Frontend User
 	public function create()
 	{
