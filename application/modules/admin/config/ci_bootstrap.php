@@ -72,7 +72,8 @@ $config['ci_bootstrap'] = array(
 				'Objects'		=> 'object',
 				'Categorys'		=> 'category',
 				'Sub-Categorys'	=> 'category/sub_category',
-				'Transactions'	=> 'transaction'
+				'Transactions'	=> 'transaction',
+				'Locations'		=> 'location'
 			)	
 		),
 		'user' => array(

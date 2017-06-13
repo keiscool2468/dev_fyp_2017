@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $config['ci_bootstrap'] = array(
 
 	// Site name
-	'site_name' => 'CI Bootstrap 3',
+	'site_name' => 'NewBarter',
 
 	// Default page title prefix
 	'page_title_prefix' => '',
@@ -80,14 +80,24 @@ $config['ci_bootstrap'] = array(
 
 	// Menu items
 	'menu' => array(
-		'home' => array(
+		'home' 	=> array(
 			'name'		=> 'Home',
 			'url'		=> '',
 		),
+		'auth' => array(
+			'name'		=> 'Auth',
+			'url'		=> 'auth',
+			'icon'		=> 'fa fa-users',
+			'children'  => array(
+				'Login'			=> 'login',
+				'Sign Up'		=> 'auth/sign_up',
+			)
+		),
+
 	),
 
 	// Login page
-	'login_url' => '',
+	'login_url' => 'auth/login',
 
 	// Restricted pages
 	'page_auth' => array(

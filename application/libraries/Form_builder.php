@@ -291,5 +291,6 @@ class Form {
 				return TRUE;
 			}
 		}
+		// return TRUE;
 	}
 }
