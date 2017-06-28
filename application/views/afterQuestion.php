@@ -7,9 +7,9 @@
                     <h1>What's make you complete this barter?</h1>
                     <div class="checkbox">
                         <input type="checkbox" name="location" 
-                                value="location">Location is not acceptable<br>
+                                value="location">Location is Good<br>
                         <input type="checkbox" name="category" 
-                                value="category">I dont like This thing
+                                value="category">I like This thing
                     </div>
                 <?php }else{ ?>
                     <h1>What's make you decline this barter?</h1>
