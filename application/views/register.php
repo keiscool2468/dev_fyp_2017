@@ -15,13 +15,13 @@
 				<input type="text" class="form-control" name="email" />
 		
 				<label class="control-label">First Name</label>
-				<input type="password" class="form-control" name="first_name"/>
+				<input type="text" class="form-control" name="first_name"/>
 
 				<label class="control-label">Last Name</label>
 				<input type="text" class="form-control" name="last_name" />
                 <div class="col-sm-6">
                     <label class="control-label">Phone Number</label>
-                    <input type="password" class="form-control" name="phone"/>    
+                    <input type="text" class="form-control" name="phone"/>    
                 </div>
                 <div class="col-sm-6"> 
                     <label class="control-label">Company(Optional)</label>
