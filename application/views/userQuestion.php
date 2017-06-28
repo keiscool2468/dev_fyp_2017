@@ -35,6 +35,16 @@
 						<th><input type="radio" name="decision" value="80"></th>
 					</tr>
 				</table>
+				<h2>Which one is more important for you?</h2>
+				<select name="location_id" class="form-control">
+					<?php foreach ($locations as $location): ?>
+						<option value="<?php echo $location['id']; ?>">
+							<?php echo $location['id']; ?>
+							<?php echo $location['name_en']; ?>
+						</option>
+					<?php endforeach; ?>
+				</select>
+				<br>
 				<button type="form_submit" class="btn btn-info">Submit</button>
 			</form>
 		</div>
@@ -50,3 +60,7 @@ th, td {
     text-align: center;
 }
 </style>
+<script type="text/javascript">
+    var sub = <?php echo json_encode($locations); ?>;
+    console.log(sub);
+</script>

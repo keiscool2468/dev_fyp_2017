@@ -116,22 +116,23 @@ class Register extends MY_Controller {
 				$users_category = array(
 					'user_id'		=> $this->mUser->id,
 					'category_id'	=> $category['id'],
-					'point'			=> 0
+					'point'			=> 0,
 				);
 			} else {
 				$users_category = array(
 					'user_id'		=> $this->mUser->id,
 					'category_id'	=> $category['id'],
-					'point'			=> 10
+					'point'			=> 10,
 				);
 			}
 			$this->db->insert('users_categorys', $users_category);
 		}
 		$location = 100 - $this->input->post('decision');
 		$user_behavior = array(
-			'user_id'	=> $this->mUser->id,
-			'interest'	=> $this->input->post('decision'),
-			'location'	=> $location
+			'user_id'		=> $this->mUser->id,
+			'interest'		=> $this->input->post('decision'),
+			'location'		=> $location,
+			'location_id'	=> $this->input->post('location_id')
 		);
 		$this->db->insert('user_behaviors', $user_behavior);
 		redirect('home');

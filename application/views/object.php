@@ -88,6 +88,7 @@
             <?php if(($object->status == 'active')&&($object->user_id != $user->id)){ ?>
                 <br>
                 <li class="list-group-item" data-toggle="modal" data-target="#<?php echo $object->id; ?>">
+                    <span class="badge"><?php echo $object->location->name_en; ?></span>
                     <div class="media">
                         <div class="media-left">
                             <?php if (!empty($object->img_url)) {  ?> <!--return to !-->
@@ -114,12 +115,27 @@
                             </div>
                             <div class="modal-bodyX">
                                 <?php if (!empty($object->img_url)) {  ?><!--return to !-->
-                                    <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="70" width="70"/>
+                                    <!--<img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="70" width="70"/>-->
                                     <!--<img class="media-object img-circle" src="<?php echo '../assets/uploads/objects' . '/'. $object->img_url; ?>" height="70" width="70"/>-->
                                 <?php } else { ?>
-                                    <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="70" width="70"/> 
+                                    <!--<img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="70" width="70"/> -->
                                 <?php }?>
-                                <p><?php print_r($object->description); ?></p>
+                                <table class="table">
+                                    <tr>
+                                        <th>中文名</th>
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Decription</th>
+                                        <th>Barter Location</th>
+                                    </tr>
+                                    <tr>
+                                        <td><?php echo $object->name_zh; ?></td>
+                                        <td><?php echo $object->name_en; ?></td>
+                                        <td><?php echo $object->sub_category->name_en; ?></td>
+                                        <td><?php echo $object->description; ?></td>
+                                        <td><?php echo $object->location->name_en; ?></td>
+                                    </tr>
+                                </table>
                             </div>
                             <div class="modal-footer">
                                 <form enctype="multipart/form-data" class="form-horizontal" role="form" 
@@ -142,6 +158,6 @@
     </ul>
 </div>
 <script type="text/javascript">
-    var sub = <?php echo json_encode($sub_cates); ?>;
+    var sub = <?php echo json_encode($objects); ?>;
     console.log(sub);
 </script>

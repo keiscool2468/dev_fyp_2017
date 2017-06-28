@@ -274,9 +274,11 @@ class MY_Controller extends MX_Controller {
 			array_unshift($this->mBreadcrumb, $entry);
 	}
 
-	protected function render_order($objects, $user_behaviors)
+	protected function render_order($objects, $user_cate, $user_behav)
 	{
+		print_r($objects);
 
+		exit;
 		return $objectsArr;
 	}
 }
