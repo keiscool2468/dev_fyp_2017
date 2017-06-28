@@ -8,7 +8,7 @@
     <div class="page-header">
 		<center>
 			<h1>Yours stuff</h1>
-            <button class="add btn btn-info pull-right" data-toggle="modal" 
+            <button class="add btn btn-info pull-right stuff" data-toggle="modal" 
                     data-target="#addObject" aria-hidden="true">
                 Post My Stuff
             </button>
@@ -115,7 +115,7 @@
     </ul>
 </div>
 <style>
-button {
+.stuff {
     position: absolute;
     top: 10%;
     right: 5%;
