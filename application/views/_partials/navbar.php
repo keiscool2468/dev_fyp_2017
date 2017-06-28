@@ -13,7 +13,7 @@
 
 	<div class="navbar-collapse collapse">
 
-		<ul class="nav navbar-nav">
+		<ul class="nav nav-tabs">
 			<?php foreach ($menu as $parent => $parent_params): ?>
 
 				<?php if (empty($parent_params['children'])): ?>
@@ -40,11 +40,15 @@
 					</li>
 
 				<?php endif; ?>
-
 			<?php endforeach; ?>
+			<?php if (!empty($user)): ?>
+				<p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link"><?php print_r($user->username); ?></a><?php echo modules::run('adminlte/widget/app_btn', 'fa fa-sign-out', 'Logout', 'login/logout'); ?></p>
+				
+			<?php else: ?>
+				<p class="navbar-text navbar-right"><a href="login">Please Login</a></p>
+			<?php endif; ?>
 		</ul>
-
-		<?php $this->load->view('_partials/language_switcher'); ?>
+		
 		
 	</div>
 

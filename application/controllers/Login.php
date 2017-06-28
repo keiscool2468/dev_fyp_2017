@@ -7,25 +7,28 @@ class Login extends MY_Controller {
 
 	/**
 	 * Login page and submission
-	 */
+	 */public function __construct()
+    {
+        parent::__construct();
+        $this->load->helper("form");
+        $this->load->helper('url_helper');
+    }
+
 	public function index()
 	{
 		$this->load->library('form_builder');
 		$form = $this->form_builder->create_form();
-
-		if ($form->validate())
+		if ($_SERVER['REQUEST_METHOD'] === 'POST')
 		{
-			// passed validation
 			$identity = $this->input->post('username');
 			$password = $this->input->post('password');
 			$remember = ($this->input->post('remember')=='on');
-			
 			if ($this->ion_auth->login($identity, $password, $remember))
 			{
 				// login succeed
 				$messages = $this->ion_auth->messages();
 				$this->system_message->set_success($messages);
-				redirect($this->mModule);
+				redirect('home');
 			}
 			else
 			{
@@ -36,9 +39,12 @@ class Login extends MY_Controller {
 			}
 		}
 		
-		// display form when no POST data, or validation failed
 		$this->mViewData['form'] = $form;
-		$this->mBodyClass = 'login-page';
 		$this->render('login', 'empty');
+	}
+	public function logout()
+	{
+		$this->ion_auth->logout();
+		redirect('home');
 	}
 }

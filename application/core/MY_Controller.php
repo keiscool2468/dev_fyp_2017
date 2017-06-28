@@ -273,6 +273,12 @@ class MY_Controller extends MX_Controller {
 		else
 			array_unshift($this->mBreadcrumb, $entry);
 	}
+
+	protected function render_order($objects, $user_behaviors)
+	{
+
+		return $objectsArr;
+	}
 }
 
 // include base controllers

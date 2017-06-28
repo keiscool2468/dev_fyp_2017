@@ -1,24 +1,23 @@
-<!-- <?php $this->load->view('_partials/navbar'); ?> -->
-<div class="container" style="width:50%">
-	<div class="login-box">
-		<div class="login-box-body">
-			<p class="login-box-msg">Sign in to start your barter</p>
-			<?php echo $form->open(); ?>
+<?php $this->load->view('_partials/navbar'); ?>
+<?php defined('BASEPATH')OR exit('No direct script access allowed');?>
+	<div class="container" >
+		<div class="login-box col-sm-6">
+			<form class="form-horizontal" role="form" action="login" method="post">
 				<?php echo $form->messages(); ?>
-				<?php echo $form->bs3_text('Username', 'username', ENVIRONMENT==='development' ? '' : 'webmaster'); ?>
-				<?php echo $form->bs3_password('Password', 'password', ENVIRONMENT==='development' ? '' : 'webmaster'); ?>
-				<div class="row">
-					<div class="col-xs-8">
-						<div class="checkbox">
-							<label><input type="checkbox" name="remember"> Remember Me</label>
-						</div>
-					</div>
-					<div class="col-xs-4">
-						<?php echo $form->bs3_submit('Sign In', 'btn btn-primary btn-block btn-flat'); ?>
+				<label for="input_fish_name" class="control-label">Username</label>
+				<input type="text" class="form-control" name="username" />
+		
+				<label for="input_fish_length" class="control-label">Password</label>
+				<input type="password" class="form-control" name="password"/>
+				</br>
+				<div class="col-xs-8">
+					<div class="checkbox">
+						<label><input type="checkbox" name="remember"> Remember Me</label>
 					</div>
 				</div>
-			<?php echo $form->close(); ?>
+				<button type="form_submit" class="btn btn-info">Login</button>
+				<button class="btn" disabled><a href="register" >Register</a></button>
+			</form>
 		</div>
 	</div>
-</div>
 <?php $this->load->view('_partials/footer'); ?>

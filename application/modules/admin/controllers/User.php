@@ -54,7 +54,6 @@ class User extends Admin_Controller {
 				'last_name'		=> $this->input->post('last_name'),
 			);
 			$groups = $this->input->post('groups');
-
 			// [IMPORTANT] override database tables to update Frontend Users instead of Admin Users
 			$this->ion_auth_model->tables = array(
 				'users'				=> 'users',

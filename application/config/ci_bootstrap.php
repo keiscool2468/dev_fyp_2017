@@ -84,16 +84,14 @@ $config['ci_bootstrap'] = array(
 			'name'		=> 'Home',
 			'url'		=> '',
 		),
-		'auth' => array(
-			'name'		=> 'Auth',
-			'url'		=> 'auth',
-			'icon'		=> 'fa fa-users',
-			'children'  => array(
-				'Login'			=> 'login',
-				'Sign Up'		=> 'auth/sign_up',
-			)
+		'object' 		=> array(
+			'name'		=> 'Object',
+			'url'		=> 'object',
 		),
-
+		'transaction' 	=> array(
+			'name'		=> 'Transaction',
+			'url'		=> 'transaction',
+		),
 	),
 
 	// Login page
