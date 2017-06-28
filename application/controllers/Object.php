@@ -26,6 +26,8 @@ class Object extends MY_Controller {
 			$this->mViewData = array(
 				'objects'  	=> $this->object_model->with('sub_category')->with('location')->get_all(),
 				'user'		=> $this->mUser,
+				'sub_cates'		=> $this->sub_category_model->with('category')->get_all(),
+				'locations'		=> $this->location_model->with('location')->get_all()
 			);
 			$this->render('myObject', 'full_width');
 		}
