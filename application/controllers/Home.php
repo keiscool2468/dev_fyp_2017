@@ -23,32 +23,42 @@ class Home extends MY_Controller {
 			$this->render('home', 'full_width');
 		else
 		{	
-			$currUserCate = $this->db->get_where('users_categorys',array('user_id' => $this->mUser->id))->result_array();
-			$currUserBehav = $this->db->get_where('user_behaviors',array('user_id' => $this->mUser->id))->result_array();
-			if((!empty($currUserCate))&&(!empty($currUserBehav))){
+			$this->db->where('point >', 0); 
+			$currUserCates = $this->db->get_where('users_categorys',array('user_id' => $this->mUser->id))->result_array();
+			$currUserBehavs = $this->db->get_where('user_behaviors',array('user_id' => $this->mUser->id))->result_array();
+			if((!empty($currUserCates))&&(!empty($currUserBehavs))){
+				$userCates = array();
+				foreach ($currUserCates as $currUserCate){
+					array_push($userCates, $currUserCate['category_id']);
+				}
+				$this->db->or_where_in('category_id', $userCates);
+				$filtedCates = $this->db->get('sub_categorys')->result_array();
+				$filtedSubCates = array();
+				foreach ($filtedCates as $filtedCate){
+					array_push($filtedSubCates, $filtedCate['id']);
+				}
 				$this->db->limit(20);
-				$this->db->where_in('sub_category', 1); 
-				$this->db->order_by('id', 'RANDOM');
+				$this->db->or_where_in('sub_category_id', $filtedSubCates);
 				$objects = (array) $this->object_model->with('sub_category')->with('location')->with('user')->get_all();
-				// $user_cate = $this->db->get('users_categorys')->result_array();
-				// $user_behav = $this->db->get_where('user_behaviors', array('user_id' => $this->mUser->id))->result_array()[0];
-				// $objectArr = $this->render_order($objects, $user_cate, $user_behav);
+				if(sizeof($objects) < 20){
+					$this->db->limit(20-sizeof($objects));
+					$this->db->or_where_in('expected_location_id', $currUserBehavs[0]['location_id']);
+					$object2s = (array) $this->object_model->with('sub_category')->with('location')->with('user')->get_all();
+					$objects = $this->render_order($objects, $currUserCates, $currUserBehavs[0], $object2s);
+				}else{
+					$objects = $this->render_order($objects, $currUserCates, $currUserBehavs[0]);
+				}
 				$this->mViewData = array(
 					'objects'  		=> $objects,
 					'sub_cates'		=> $this->sub_category_model->with('category')->get_all(),
 					'locations'		=> $this->location_model->with('location')->get_all(),
 					'user'			=> $this->mUser->username,
-					'category'		=> $currUserCate,
-					'behaviors'		=> $currUserBehav
+					'object2s'		=> $object2s,
+					'behaviors'		=> $currUserBehavs[0],
+					'categorys'		=> $currUserCates,
 				);
-				// $this->mViewData = array(
-				// 	'objects'  		=> $this->object_model->with('sub_category')->with('location')->with('user')->get_all(),
-				// 	'sub_cates'		=> $this->sub_category_model->with('category')->get_all(),
-				// 	'locations'		=> $this->location_model->with('location')->get_all(),
-				// 	'user'			=> $this->mUser->username,
-				// );
 				$this->render('object', 'full_width');
-			} 
+			}
 			else {
 				$this->mViewData = array(
 					'categorys'  	=> $this->db->get('categorys')->result_array(),

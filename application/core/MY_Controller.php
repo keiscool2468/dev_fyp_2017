@@ -274,12 +274,46 @@ class MY_Controller extends MX_Controller {
 			array_unshift($this->mBreadcrumb, $entry);
 	}
 
-	protected function render_order($objects, $user_cate, $user_behav)
+	protected function render_order($objects, $user_cate, $user_behav, $object2s = NULL)
 	{
-		print_r($objects);
-
-		exit;
-		return $objectsArr;
+		$interest = $user_behav['interest'];
+		$location = $user_behav['location'];
+		$orderedArr = array();
+		if($interest > $location) {
+			$this->mViewData['abc'] = 'interest';
+			foreach($objects as $object){
+				if($object['expected_location_id'] == $user_behav['location_id']){
+					array_push($orderedArr, $object);
+					$key = array_search($objects, $object);
+					unset($objects, $key);
+				}
+			}
+			foreach($objects as $object){
+				array_push($orderedArr, $object);
+			}
+			foreach($object2s as $object){
+				array_push($orderedArr, $object);
+			}
+		} elseif($interest < $location) {
+			$this->mViewData['abc'] = 'location';
+			foreach($objects as $object){
+				if($object->expected_location_id == $user_behav['location_id']){
+					array_push($orderedArr, $object);
+					// if(($key = array_search($del_val, $messages)) !== false) {
+					// 	unset($messages[$key]);
+					// }
+					$key = array_search($object, $objects);
+					unset($objects[$key]);
+				}
+			}
+			foreach($objects as $object){
+				array_push($orderedArr, $object);
+			}
+		} else {
+			$this->mViewData['abc'] = 'same';
+			$orderedArr = array_merge($objects, $object2s);
+		}
+		return $orderedArr;
 	}
 }
 

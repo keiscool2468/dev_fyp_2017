@@ -96,7 +96,7 @@
                                 <!--<img class="media-object img-circle" src="<?php echo '../assets/uploads/objects' . '/'. $object->img_url; ?>" height="70" width="70"/>-->
                             <?php } else { ?>
                                 <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="70" width="70"/> 
-                            <?php }?>c
+                            <?php }?>
                         </div>
                         <div class="media-body">
                             <h2 class="media-heading"><?php print_r($object->name_zh); ?><br><?php print_r($object->sub_category->name_en); ?></h2>
@@ -158,8 +158,12 @@
     </ul>
 </div>
 <script type="text/javascript">
-    var sub = <?php echo json_encode($objects); ?>;
-    var cate = <?php echo json_encode($category); ?>;
-    console.log(sub);
-    console.log(cate);
+    var objects = <?php echo json_encode($objects); ?>;
+    var object2s = <?php echo json_encode($object2s); ?>;
+    var behaviors = <?php echo json_encode($behaviors); ?>;
+    var categorys = <?php echo json_encode($categorys); ?>;
+    console.log(objects);
+    console.log(object2s);
+    console.log(behaviors);
+    console.log(categorys);
 </script>
