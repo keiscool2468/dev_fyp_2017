@@ -23,11 +23,11 @@ class Home extends MY_Controller {
 			$this->render('home', 'full_width');
 		else
 		{	
-			$currUser = $this->db->get_where('users_categorys',array('user_id' => $this->mUser->id))->result_array();
-			$currUser2 = $this->db->get_where('user_behaviors',array('user_id' => $this->mUser->id))->result_array();
-			if((!empty($currUser))&&(!empty($currUser2))){
+			$currUserCate = $this->db->get_where('users_categorys',array('user_id' => $this->mUser->id))->result_array();
+			$currUserBehav = $this->db->get_where('user_behaviors',array('user_id' => $this->mUser->id))->result_array();
+			if((!empty($currUserCate))&&(!empty($currUserBehav))){
 				$this->db->limit(20);
-				// $this->db->where_in('sub_category', 1); 
+				$this->db->where_in('sub_category', 1); 
 				$this->db->order_by('id', 'RANDOM');
 				$objects = (array) $this->object_model->with('sub_category')->with('location')->with('user')->get_all();
 				// $user_cate = $this->db->get('users_categorys')->result_array();
@@ -38,6 +38,8 @@ class Home extends MY_Controller {
 					'sub_cates'		=> $this->sub_category_model->with('category')->get_all(),
 					'locations'		=> $this->location_model->with('location')->get_all(),
 					'user'			=> $this->mUser->username,
+					'category'		=> $currUserCate,
+					'behaviors'		=> $currUserBehav
 				);
 				// $this->mViewData = array(
 				// 	'objects'  		=> $this->object_model->with('sub_category')->with('location')->with('user')->get_all(),
