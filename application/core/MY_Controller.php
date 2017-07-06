@@ -282,10 +282,10 @@ class MY_Controller extends MX_Controller {
 		if($interest > $location) {
 			$this->mViewData['abc'] = 'interest';
 			foreach($objects as $object){
-				if($object['expected_location_id'] == $user_behav['location_id']){
+				if($object->expected_location_id == $user_behav['location_id']){
 					array_push($orderedArr, $object);
-					$key = array_search($objects, $object);
-					unset($objects, $key);
+					$key = array_search($object, $objects);
+					unset($objects[$key]);
 				}
 			}
 			foreach($objects as $object){
@@ -299,9 +299,6 @@ class MY_Controller extends MX_Controller {
 			foreach($objects as $object){
 				if($object->expected_location_id == $user_behav['location_id']){
 					array_push($orderedArr, $object);
-					// if(($key = array_search($del_val, $messages)) !== false) {
-					// 	unset($messages[$key]);
-					// }
 					$key = array_search($object, $objects);
 					unset($objects[$key]);
 				}
