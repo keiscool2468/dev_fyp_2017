@@ -20,7 +20,7 @@
 		</tr>
 		<tr>
 			<th>3</th>
-			<th><a href="../home">Click here to register page</a></th>
+			<th><a href="../register">Click here to register page</a></th>
 		</tr>
 		<tr>
 			<th>4</th>
@@ -32,7 +32,7 @@
 		</tr>
 		<tr>
 			<th>6</th>
-			<th><a href="../home">Click here to register page</a></th>
+			<th><a href="../register">Click here to register page</a></th>
 		</tr>
 	</table>
 </div>
