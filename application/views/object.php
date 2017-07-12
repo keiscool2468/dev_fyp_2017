@@ -2,6 +2,9 @@
     .modal-bodyX {
         display: inline-flex;
     }
+    .list-group-item>.badge {
+        float: none;
+    }
 </style>
 <div class="container"><br>
 	<button class="add btn btn-info pull-right" data-toggle="modal" 
@@ -54,8 +57,7 @@
 						</div>
 						<div class="col-sm-12">
 							<label for="input_fish_name" class="control-label">Image</label>
-                            <input type="hidden" name="MAX_FILE_SIZE" value="512000" />
-							<input type="file" class="form-control" name="img_url" accept="image/*" disabled />
+							<input type="file" class="form-control" name="img_url"/>
 						</div>
 						<div class="col-sm-12">
 							<label for="input_fish_name" class="control-label">Expecting Location for Barter</label>
@@ -73,7 +75,7 @@
 		            <div class="modal-footer">
 	            		<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 
-	            		<button type="submit" class="btn btn-info">Post it</button>
+	            		<button type="submit" class="btn btn-info" value="upload">Post it</button>
 		            </div>
 	           	</form>
 	        </div>
@@ -139,12 +141,12 @@
         <?php foreach ($objects as $object): ?>
             <?php if(($object->status == 'active')&&($object->user_id != $user->id)){ ?>
                 <li class="list-group-item col-sm-3" data-toggle="modal" data-target="#<?php echo $object->id; ?>">
-                    <!--<span class="badge"><?php echo $object->location->name_en; ?></span>-->
+                    <span class="badge" style="z-inde"><?php echo $object->name_en; ?></span>
                     <div class="media">
                         <div class="media-left">
                             <?php if (!empty($object->img_url)) {  ?> <!--return to !-->
-                                <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="auto" width="auto"/>
-                                <!--<img class="media-object img-circle" src="<?php echo '../assets/uploads/objects' . '/'. $object->img_url; ?>" height="70" width="70"/>-->
+                                <!--<img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="auto" width="auto"/>-->
+                                <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects' . '/'. $object->img_url; ?>" height="auto" width="auto"/>
                             <?php } else { ?>
                                 <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="auto" width="auto"/> 
                             <?php }?>

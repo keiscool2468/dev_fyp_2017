@@ -7,11 +7,11 @@
 <div class="container">
     <div class="page-header">
 		<center>
-			<h1>Yours stuff</h1>
-            <button class="add btn btn-info pull-right stuff" data-toggle="modal" 
+            <button class="add btn btn-info pull-right " data-toggle="modal" 
                     data-target="#addObject" aria-hidden="true">
                 Post My Stuff
             </button>
+			<h1>Yours stuff</h1>
 		</center>
         <!--Add Object Modal-->
         <div class="modal fade" id="addObject" tabindex="-1" role="dialog" 
@@ -60,7 +60,7 @@
                             <div class="col-sm-12">
                                 <label for="input_fish_name" class="control-label">Image</label>
                                 <input type="hidden" name="MAX_FILE_SIZE" value="512000" />
-                                <input type="file" class="form-control" name="img_url" accept="image/*" disabled />
+                                <input type="file" class="form-control" name="img_url" accept="image/*"/>
                             </div>
                             <div class="col-sm-12">
                                 <label for="input_fish_name" class="control-label">Expecting Location for Barter</label>
@@ -145,8 +145,8 @@
                     <div class="media">
                         <div class="media-left">
                             <?php if (!empty($object->img_url)) {  ?> <!--return to !-->
-                                <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="70" width="70"/>
-                                <!--<img class="media-object img-circle" src="<?php echo '../assets/uploads/objects' . '/'. $object->img_url; ?>" height="70" width="70"/>-->
+                                <!--<img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="70" width="70"/>-->
+                                <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects' . '/'. $object->img_url; ?>" height="70" width="70"/>
                             <?php } else { ?>
                                 <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="70" width="70"/> 
                             <?php }?>
