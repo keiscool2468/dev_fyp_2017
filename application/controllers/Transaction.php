@@ -89,6 +89,25 @@ class Transaction extends MY_Controller {
 		);
 		$this->render('afterQuestion', 'full_width');
 	}
+	public function acceptDecline()
+	{
+		if($this->input->post('user_2_accept') == 'decline')
+		{
+			$transaction = array(
+				'user_2_accept'	=> 'decline',
+				'status'		=> 'inactive',
+			);
+			$this->db->where('id', $this->input->post('transaction_id'));
+			$this->db->update('transactions',$transaction);
+		} else {
+			$transaction = array(
+				'user_2_accept'	=> 'accept'
+			);
+			$this->db->where('id', $this->input->post('transaction_id'));
+			$this->db->update('transactions',$transaction);
+		}
+		redirect('transaction');
+	}
 	public function feedback()
 	{	
 		$location = empty($this->input->post('location'));

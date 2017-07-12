@@ -42,8 +42,9 @@
 				<?php endif; ?>
 			<?php endforeach; ?>
 			<?php if (!empty($user)): ?>
-				<p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link"><?php print_r($user->username); ?></a><?php echo modules::run('adminlte/widget/app_btn', 'fa fa-sign-out', 'Logout', 'login/logout'); ?></p>
-				
+				<p class="navbar-text navbar-right" data-toggle="modal" data-target="#profile">
+					Signed in as  <?php print_r($user->username); ?><?php echo modules::run('adminlte/widget/app_btn', 'fa fa-sign-out', 'Logout', 'login/logout'); ?>
+				</p>
 			<?php else: ?>
 				<p class="navbar-text navbar-right"><a href="login">Please Login</a></p>
 			<?php endif; ?>

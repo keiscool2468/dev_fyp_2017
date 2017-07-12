@@ -84,8 +84,58 @@
                 </div>
             </div>
         </div>
-        <!--End ofAdd Object Modal-->
-    </div>
+        <div class="modal fade" id="profile" role="dialog" 
+            aria-labelledby="myModalLabel">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">
+                            Profile Edit
+                        </h4>
+                    </div>
+
+                    <!-- Modal Body -->
+                    
+                    <form enctype="multipart/form-data" class="form-horizontal" role="form" 
+                        action="profile" method="post" >
+                        <div class="modal-body row">
+                            <label class="control-label">Username</label>
+                            <input type="text" class="form-control" name="username" value="<?php print_r($user->username); ?>"/>
+
+                            <label class="control-label">Password</label>
+                            <input type="password" class="form-control" name="password"/>
+
+                            <label class="control-label">First Name</label>
+                            <input type="text" class="form-control" name="first_name" value="<?php print_r($user->first_name); ?>"/>
+
+                            <label class="control-label">Last Name</label>
+                            <input type="text" class="form-control" name="last_name" value="<?php print_r($user->last_name); ?>"/>
+                            <div class="col-sm-6">
+                                <label class="control-label">Phone Number</label>
+                                <input type="text" class="form-control" name="phone" value="<?php print_r($user->phone); ?>"/>    
+                            </div>
+                            <div class="col-sm-6"> 
+                                <label class="control-label">Company(Optional)</label>
+                                <input type="text" class="form-control" name="company" value="<?php print_r($user->company); ?>"/>
+                            </div>
+                        </div>
+                    
+                        <!-- Modal Footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                            <button type="submit" class="btn btn-info">Edit it</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     <ul class="list-group">
     <?php if(!empty($objects)){ ?>
         <?php foreach ($objects as $object): ?>

@@ -49,7 +49,6 @@
 			</form>
 		</div>
 	</div>
-<?php $this->load->view('_partials/footer'); ?>
 <style>
 .checkbox {
 	margin-left: 30px;

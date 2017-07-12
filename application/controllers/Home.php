@@ -53,7 +53,7 @@ class Home extends MY_Controller {
 					'sub_cates'		=> $this->sub_category_model->with('category')->get_all(),
 					'locations'		=> $this->location_model->with('location')->get_all(),
 					'user'			=> $this->mUser->username,
-					'object2s'		=> $object2s,
+					// 'object2s'		=> $object2s,
 					'behaviors'		=> $currUserBehavs[0],
 					'categorys'		=> $currUserCates,
 				);

@@ -25,7 +25,6 @@
 			</form>
 		</div>
 	</div>
-<?php $this->load->view('_partials/footer'); ?>
 
 <style>
 .checkbox {

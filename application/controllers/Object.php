@@ -21,11 +21,11 @@ class Object extends MY_Controller {
 		if(empty($this->mUser))
 			redirect('login');
 		else
-		{	
+		{
 			$myObjects = $this->db->get_where('objects',array('user_id' => $this->mUser->id))->result_array();
 			$this->mViewData = array(
-				'objects'  	=> $this->object_model->with('sub_category')->with('location')->get_all(),
-				'user'		=> $this->mUser,
+				'objects'  		=> $this->object_model->with('sub_category')->with('location')->get_all(),
+				'user'			=> $this->mUser,
 				'sub_cates'		=> $this->sub_category_model->with('category')->get_all(),
 				'locations'		=> $this->location_model->with('location')->get_all()
 			);

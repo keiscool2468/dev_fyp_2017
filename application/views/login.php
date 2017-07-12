@@ -4,7 +4,7 @@
 		<div class="login-box col-sm-6">
 			<form class="form-horizontal" role="form" action="login" method="post">
 				<?php echo $form->messages(); ?>
-				<label for="input_fish_name" class="control-label">Username</label>
+				<label for="input_fish_name" class="control-label">E-mail</label>
 				<input type="text" class="form-control" name="username" />
 		
 				<label for="input_fish_length" class="control-label">Password</label>
@@ -20,4 +20,3 @@
 			</form>
 		</div>
 	</div>
-<?php $this->load->view('_partials/footer'); ?>

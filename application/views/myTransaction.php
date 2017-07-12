@@ -14,26 +14,50 @@
         <?php if(!empty($transactions)){ ?>
             <?php foreach ($transactions as $transaction): ?>
                 <?php if($transaction->status == 'active'){ ?>
-                    <?php if(($transaction->user_id_2 == $user->id)&&(!empty($transaction->object_1))&&($transaction->object_1->status == 'active')&&($transaction->object_2->status == 'active')){ ?>  <!--display after other side selected the stuff-->
+                    <?php if(($transaction->user_id_2 == $user->id)
+                                // &&(!empty($transaction->object_1))
+                                    // &&($transaction->object_1->status == 'active')
+                                        &&($transaction->object_2->status == 'active')){ ?> 
                         <br>
                         <li class="list-group-item">
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="media-heading">Request From the others!!</h4>
+                                    <?php if((!empty($transaction->object_id_1))&&(!empty($transaction->object_id_2))&&($transaction->user_2_accept == 'decline')){ ?>
+                                        <form enctype="multipart/form-data" class="form-horizontal button-form" role="form" 
+                                            action="transaction/acceptDecline" method="post" >
+                                            <input type="hidden" class="form-control" name="transaction_id" hidden value="<?php echo $transaction->id; ?>"/>
+                                            <input type="hidden" class="form-control" name="user_2_accept" hidden value="accept"/>
+                                            <button type="submit" class="btn btn-success">Accept</button>
+                                        </form>
+                                        <form enctype="multipart/form-data" class="form-horizontal button-form" role="form" 
+                                            action="transaction/acceptDecline" method="post">
+                                            <input type="hidden" class="form-control" name="transaction_id" hidden value="<?php echo $transaction->id; ?>"/>
+                                            <input type="hidden" class="form-control" name="user_2_accept" hidden value="decline"/>  
+                                            <button type="submit" class="btn btn-warning" >Decline</button>
+                                        </form>
+                                    <?php }else{ ?>
+                                        <h4 class="media-heading">Wait for the others!!</h4>
+                                    <?php } ?>
                                     <table class="table">
                                         <tr>
                                             <th>
                                                 Your Object
                                             </th>
                                             <th>
-                                                <big>Other Side :</big><?php print_r($transaction->user_2->username); ?>
+                                                <big>Other Side :</big><?php print_r($transaction->user_1->username); ?>
                                             </th>
                                         </tr>
                                         <tr>
                                             <td>
+                                                <?php print_r($transaction->object_2->name_en); ?>
                                             </td>
                                             <td>
-                                                <?php print_r($transaction->object_2->name_en); ?>
+                                                <?php print_r($transaction->object_1->name_en); ?>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
                                             </td>
                                         </tr>
                                     </table>
@@ -46,7 +70,7 @@
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="media-heading">Your Request!!</h4>
-                                    <?php if((!empty($transaction->object_id_1))&&(!empty($transaction->object_id_2))){ ?>
+                                    <?php if((!empty($transaction->object_id_1))&&(!empty($transaction->object_id_2))&&($transaction->user_2_accept == "accept")){ ?>
                                         <form enctype="multipart/form-data" class="form-horizontal button-form" role="form" 
                                             action="transaction/comfirmCancel" method="post" >
                                             <input type="hidden" class="form-control" name="boolean" hidden value="1"/>
@@ -160,9 +184,59 @@
         </ul>
     </div>
 </div>
+<div class="modal fade" id="profile" role="dialog" 
+    aria-labelledby="myModalLabel">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Profile Edit
+                </h4>
+            </div>
+
+            <!-- Modal Body -->
+            
+            <form enctype="multipart/form-data" class="form-horizontal" role="form" 
+                action="profile" method="post" >
+                <div class="modal-body row">
+                    <label class="control-label">Username</label>
+                    <input type="text" class="form-control" name="username" value="<?php print_r($user->username); ?>"/>
+
+                    <label class="control-label">Password</label>
+                    <input type="password" class="form-control" name="password"/>
+
+                    <label class="control-label">First Name</label>
+                    <input type="text" class="form-control" name="first_name" value="<?php print_r($user->first_name); ?>"/>
+
+                    <label class="control-label">Last Name</label>
+                    <input type="text" class="form-control" name="last_name" value="<?php print_r($user->last_name); ?>"/>
+                    <div class="col-sm-6">
+                        <label class="control-label">Phone Number</label>
+                        <input type="text" class="form-control" name="phone" value="<?php print_r($user->phone); ?>"/>    
+                    </div>
+                    <div class="col-sm-6"> 
+                        <label class="control-label">Company(Optional)</label>
+                        <input type="text" class="form-control" name="company" value="<?php print_r($user->company); ?>"/>
+                    </div>
+                </div>
+            
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+                    <button type="submit" class="btn btn-info">Edit it</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
     var aa = <?php echo json_encode($transactions); ?>;
-    var objects = <?php echo json_encode($objects); ?>;
     console.log(aa);
-    console.log(objects);
 </script>
