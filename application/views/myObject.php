@@ -32,8 +32,7 @@
 
                     <!-- Modal Body -->
                     
-                    <form enctype="multipart/form-data" class="form-horizontal" role="form" 
-                    action="object/addObject" method="post" >
+                    <?php echo form_open_multipart('Object/addObject');?>
                         <div class="modal-body row">
                             <div class="col-sm-12">
                                 <label for="input_fish_name" class="control-label">中文名</label>
@@ -57,11 +56,10 @@
                                 <label for="input_fish_name" class="control-label">Description</label>
                                 <input type="text" class="form-control" name="description" placeholder="Decripte it" />
                             </div>
-                            <div class="col-sm-12">
-                                <label for="input_fish_name" class="control-label">Image</label>
-                                <input type="hidden" name="MAX_FILE_SIZE" value="512000" />
-                                <input type="file" class="form-control" name="img_url" accept="image/*"/>
-                            </div>
+                            <!--<div class="col-sm-12">
+                                <label for="input_fish_name" class="control-label">Image</label>img_url
+                                <input type="file" name="userfile" size="20" />
+                            </div>-->
                             <div class="col-sm-12">
                                 <label for="input_fish_name" class="control-label">Expecting Location for Barter</label>
                                 <select name="location" class="form-control">	
@@ -146,7 +144,7 @@
                         <div class="media-left">
                             <?php if (!empty($object->img_url)) {  ?> <!--return to !-->
                                 <!--<img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="70" width="70"/>-->
-                                <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects' . '/'. $object->img_url; ?>" height="70" width="70"/>
+                                <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects' . '/'. $object->img_url.'.jpg'; ?>" height="70" width="70"/>
                             <?php } else { ?>
                                 <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="70" width="70"/> 
                             <?php }?>

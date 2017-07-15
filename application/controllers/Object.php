@@ -34,13 +34,6 @@ class Object extends MY_Controller {
 	}
 	public function addObject()
 	{
-		$config['upload_path']          = '../assets/uploads/objects';
-		$config['allowed_types']        = 'gif|jpg|png';
-		$config['max_size']             = 100;
-		$config['max_width']            = 1024;
-		$config['max_height']           = 768;
-		$this->load->library('upload', $config);
-		$this->upload->do_upload('img_url');
 		if ($_SERVER['REQUEST_METHOD'] === 'POST')
 		{	
 			// print_r($_FILES['img_url']['name']);exit;
@@ -49,7 +42,7 @@ class Object extends MY_Controller {
 				'name_en'							=> $this->input->post('name_en'),
 				'sub_category_id'					=> $this->input->post('sub_cate'),
 				'description'						=> $this->input->post('description'),
-				'img_url'							=> $_FILES['img_url']['name'],
+				'img_url'							=> $this->input->post('sub_cate'),
 				'user_id'							=> $this->mUser->id,
 				'expected_location_id'				=> $this->input->post('location'),
 				'status'							=> 'active'

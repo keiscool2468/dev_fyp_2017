@@ -55,10 +55,10 @@
 							<label for="input_fish_name" class="control-label">Description</label>
 							<input type="text" class="form-control" name="description" placeholder="Decripte it" />
 						</div>
-						<div class="col-sm-12">
+						<!--<div class="col-sm-12">
 							<label for="input_fish_name" class="control-label">Image</label>
 							<input type="file" class="form-control" name="img_url"/>
-						</div>
+						</div>-->
 						<div class="col-sm-12">
 							<label for="input_fish_name" class="control-label">Expecting Location for Barter</label>
 							<select name="location" class="form-control">	
@@ -146,7 +146,7 @@
                         <div class="media-left">
                             <?php if (!empty($object->img_url)) {  ?> <!--return to !-->
                                 <!--<img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="auto" width="auto"/>-->
-                                <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects' . '/'. $object->img_url; ?>" height="auto" width="auto"/>
+                                <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects' . '/'. $object->img_url.'.jpg'; ?>" height="auto" width="auto"/>
                             <?php } else { ?>
                                 <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="auto" width="auto"/> 
                             <?php }?>
