@@ -274,7 +274,7 @@ class MY_Controller extends MX_Controller {
 			array_unshift($this->mBreadcrumb, $entry);
 	}
 
-	protected function render_order($objects, $user_cate, $user_behav, $object2s = NULL)
+	protected function render_order($objects, $user_cate, $user_behav, $object2s = [])
 	{
 		// print_r(sizeof($object2s));exit;
 		$interest = $user_behav['interest'];
