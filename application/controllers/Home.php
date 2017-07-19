@@ -37,12 +37,12 @@ class Home extends MY_Controller {
 				foreach ($filtedCates as $filtedCate){
 					array_push($filtedSubCates, $filtedCate['id']);
 				}
-				$this->db->limit(200);
+				$this->db->limit(40);
 				$this->db->or_where_in('sub_category_id', $filtedSubCates);
 				$this->db->where('status', 'active');
 				$objects = (array) $this->object_model->with('sub_category')->with('location')->with('user')->get_all();
-				if(sizeof($objects) < 200){
-					$this->db->limit(200-sizeof($objects));
+				if(sizeof($objects) < 40){
+					$this->db->limit(40-sizeof($objects));
 					$this->db->or_where_in('expected_location_id', $currUserBehavs[0]['location_id']);
 					$this->db->or_where_not_in('sub_category_id', $filtedSubCates);
 					$this->db->where('status', 'active');
