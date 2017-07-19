@@ -292,7 +292,7 @@ class MY_Controller extends MX_Controller {
 			foreach($objects as $object){
 				array_push($orderedArr, $object);
 			}
-			if($object2){
+			if(sizeof($object2)){
 				foreach($object2s as $object){
 					array_push($orderedArr, $object);
 				}
@@ -311,7 +311,7 @@ class MY_Controller extends MX_Controller {
 			foreach($objects as $object){
 				array_push($orderedArr, $object);
 			}
-			if($object2s){
+			if(sizeof($object2s)){
 				foreach($object2s as $object){
 					array_push($orderedArr, $object);
 				}
