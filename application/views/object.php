@@ -146,9 +146,9 @@
                         <div class="media-left">
                             <?php if (!empty($object->img_url)) {  ?> <!--return to !-->
                                 <!--<img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="auto" width="auto"/>-->
-                                <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects' . '/'. $object->img_url.'.jpg'; ?>" height="auto" width="auto"/>
+                                <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects' . '/'. $object->img_url.'.jpg'; ?>" height="100" width="100"/>
                             <?php } else { ?>
-                                <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="auto" width="auto"/> 
+                                <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="70" width="70"/> 
                             <?php }?>
                         </div>
                         <div class="media-body">
@@ -176,16 +176,22 @@
                                 <table class="table">
                                     <tr>
                                         <th>中文名</th>
-                                        <th>Name</th>
-                                        <th>Category</th>
-                                        <th>Decription</th>
-                                        <th>Barter Location</th>
+                                        <td><?php echo $object->name_zh; ?></td>
                                     </tr>
                                     <tr>
-                                        <td><?php echo $object->name_zh; ?></td>
+                                        <th>Name</th>
                                         <td><?php echo $object->name_en; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Category</th>
                                         <td><?php echo $object->sub_category->name_en; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Decription</th>
                                         <td><?php echo $object->description; ?></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Barter Location</th>
                                         <td><?php echo $object->location->name_en; ?></td>
                                     </tr>
                                 </table>
