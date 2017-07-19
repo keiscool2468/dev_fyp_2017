@@ -292,8 +292,10 @@ class MY_Controller extends MX_Controller {
 			foreach($objects as $object){
 				array_push($orderedArr, $object);
 			}
-			foreach($object2s as $object){
-				array_push($orderedArr, $object);
+			if($object2){
+				foreach($object2s as $object){
+					array_push($orderedArr, $object);
+				}
 			}
 			// print_r('298');exit;
 		} elseif($interest < $location) {
@@ -309,8 +311,10 @@ class MY_Controller extends MX_Controller {
 			foreach($objects as $object){
 				array_push($orderedArr, $object);
 			}
-			foreach($object2s as $object){
-				array_push($orderedArr, $object);
+			if($object2s){
+				foreach($object2s as $object){
+					array_push($orderedArr, $object);
+				}
 			}
 			// print_r('311');exit;
 		} else {
