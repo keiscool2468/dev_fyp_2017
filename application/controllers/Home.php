@@ -30,18 +30,28 @@ class Home extends MY_Controller {
 			if((!empty($currUserCates))&&(!empty($currUserBehavs))){
 				$userCates = array();
 				foreach ($currUserCates as $currUserCate){
-					array_push($userCates, $currUserCate['category_id']);
+					$this->db->where_in('category_id', $currUserCate['category_id']);
+					$filtedCates = $this->db->get('sub_categorys')->result_array();
+					foreach ($filtedCates as $filtedCate) {
+						array_push($userCates, $filtedCate);
+					}
 				}
-				$this->db->or_where_in('category_id', $userCates);
-				$filtedCates = $this->db->get('sub_categorys')->result_array();
+				// $this->db->or_where_in('category_id', $userCates);
+				// $filtedCates = $this->db->get('sub_categorys')->result_array();
 				$filtedSubCates = array();
-				foreach ($filtedCates as $filtedCate){
-					array_push($filtedSubCates, $filtedCate['id']);
+				foreach ($userCates as $userCate){
+					array_push($filtedSubCates, $userCate['id']);
 				}
 				$this->db->limit(40);
-				$this->db->or_where_in('sub_category_id', $filtedSubCates);
 				$this->db->where('status', 'active');
-				$objects = (array) $this->object_model->with('sub_category')->with('location')->with('user')->get_all();
+				$objects = array();
+				foreach ($filtedSubCates as $filtedSubCate) {
+					$this->db->where_in('sub_category_id', $filtedSubCate);
+					$objs = $this->object_model->with('sub_category')->with('location')->with('user')->get_all();
+					foreach ($objs as $obj) {
+						array_push($objects, $obj);
+					}
+				}
 				if(sizeof($objects) < 40){
 					$this->db->limit(40-sizeof($objects));
 					// $this->db->or_where_in('expected_location_id', $currUserBehavs[0]['location_id']);
@@ -60,7 +70,7 @@ class Home extends MY_Controller {
 					'user'			=> $this->mUser->username,
 					// 'object2s'		=> $object2s,
 					'behaviors'		=> $currUserBehavs[0],
-					'categorys'		=> $currUserCates,
+					'categorys'		=> $filtedSubCates,
 				);
 				$this->render('object', 'full_width');
 			}
