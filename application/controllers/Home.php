@@ -39,7 +39,6 @@ class Home extends MY_Controller {
 					array_push($filtedSubCates, $filtedCate['id']);
 				}
 				$this->db->limit(40);
-				$this->db->order_by("id", "random");
 				$this->db->or_where_in('sub_category_id', $filtedSubCates);
 				$this->db->where('status', 'active');
 				$objects = (array) $this->object_model->with('sub_category')->with('location')->with('user')->get_all();
@@ -48,6 +47,7 @@ class Home extends MY_Controller {
 					$this->db->or_where_in('expected_location_id', $currUserBehavs[0]['location_id']);
 					$this->db->or_where_not_in('sub_category_id', $filtedSubCates);
 					$this->db->where('status', 'active');
+					$this->db->order_by("id", "random");
 					$object2s = (array) $this->object_model->with('sub_category')->with('location')->with('user')->get_all();
 					$objects = $this->render_order($objects, $currUserCates, $currUserBehavs[0], $object2s);
 				}else{
