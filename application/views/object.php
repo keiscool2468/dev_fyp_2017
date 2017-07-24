@@ -217,6 +217,6 @@
     </ul>
 </div>
 <script type="text/javascript">
-    var categorys = <?php echo json_encode($categorys); ?>;
-    console.log(categorys);
+    var objects = <?php echo json_encode($objects); ?>;
+    console.log(objects);
 </script>
