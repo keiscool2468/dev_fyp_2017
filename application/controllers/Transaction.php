@@ -65,7 +65,7 @@ class Transaction extends MY_Controller {
 			);
 			$this->db->where('id', $this->input->post('transaction_id'));
 			$this->db->update('transactions',$transaction);
-
+			
 			//update firtst objects status
 			$object_1 = array(
 				'status'	=> 'inactive',
@@ -79,7 +79,14 @@ class Transaction extends MY_Controller {
 			);
 			$this->db->where('id', $this->input->post('object_id_2'));
 			$this->db->update('objects',$object_2);
-
+			//update user interest
+			$target_object = $this->db->get_where('objects',array('id' => $this->input->post('object_id_2')))->result_array()[0];
+			$target_subCate = $this->db->get_where('sub_categorys',array('id' => $target_object['sub_category_id']))->result_array()[0];
+			$target_Cate = $this->db->get_where('categorys',array('id' => $target_subCate['category_id']))->result_array()[0];
+			$target_user_cate = $this->db->get_where('users_categorys',array('user_id' => $this->mUser->id))->result_array()[0];
+			$target_user_cate['point'] += 1;
+			$this->db->where('id', $target_user_cate['id']);
+			$this->db->update('users_categorys', $target_user_cate);
 			$this->mViewData = array(
 				'boolean'  	=> $this->input->post('boolean'),
 			);

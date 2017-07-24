@@ -23,7 +23,8 @@ class Home extends MY_Controller {
 			$this->render('home', 'full_width');
 		else
 		{	
-			$this->db->where('point >', 0); 
+			$this->db->where('point >', 0);
+			$this->db->order_by("point", "desc");
 			$currUserCates = $this->db->get_where('users_categorys',array('user_id' => $this->mUser->id))->result_array();
 			$currUserBehavs = $this->db->get_where('user_behaviors',array('user_id' => $this->mUser->id))->result_array();
 			if((!empty($currUserCates))&&(!empty($currUserBehavs))){
