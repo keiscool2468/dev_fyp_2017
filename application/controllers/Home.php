@@ -54,7 +54,7 @@ class Home extends MY_Controller {
 					}
 				}
 				if(sizeof($objects) < 40){
-					$this->db->limit(40-sizeof($objects));
+					// $this->db->limit(40-sizeof($objects));
 					$this->db->where('status', 'active');
 					// $this->db->or_where_in('expected_location_id', $currUserBehavs[0]['location_id']);
 					$this->db->order_by("id", "random");
