@@ -292,7 +292,7 @@ class MY_Controller extends MX_Controller {
 			foreach($objects as $object){
 				array_push($orderedArr, $object);
 			}
-			if(sizeof($object2) > 0){
+			if(sizeof($object2s) > 0){
 				foreach($object2s as $object){
 					array_push($orderedArr, $object);
 				}
