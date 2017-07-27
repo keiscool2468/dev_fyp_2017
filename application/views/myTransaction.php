@@ -150,7 +150,8 @@
                         <!--end of object modal-->
                     <?php } ?>
                 <?php } elseif($transaction->status == 'finished'){ ?>
-                    <br>
+                    <?php if($transaction->user_id_1 == $user->id){ ?>
+                        <br>
                         <li class="list-group-item">
                             <div class="media">
                                 <div class="media-body">
@@ -176,6 +177,34 @@
                                 </div>
                             </div>
                         </li>
+                    <?php }elseif ($transaction->user_id_2 == $user->id) { ?>
+                        <br>
+                        <li class="list-group-item">
+                            <div class="media">
+                                <div class="media-body">
+                                    <h4 class="media-heading">Things you changed!!</h4>
+                                    <table class="table">
+                                        <tr>
+                                            <th>
+                                                Your Object
+                                            </th>
+                                            <th>
+                                                <big>Other Side :</big><?php print_r($transaction->user_1->username); ?>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <?php print_r($transaction->object_2->name_en); ?>
+                                            </td>
+                                            <td>
+                                                <?php print_r($transaction->object_1->name_en); ?>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </li>
+                    <?php } ?>
                 <?php } ?>
             <?php endforeach; ?>
         <?php }else{ ?>
