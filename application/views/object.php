@@ -201,8 +201,41 @@
     </ul>
 </div>
 <script type="text/javascript">
+    var behaviors = <?php echo json_encode($behaviors); ?>;
     var categorys = <?php echo json_encode($categorys); ?>;
     var objects = <?php echo json_encode($objects); ?>;
+    var object2s = <?php echo json_encode($object2s); ?>;
+    console.log('Input data: ')
+    console.log(`1:User Behaviors`);
+    console.log(behaviors);
+    console.log(`2:User Categorys:`);
     console.log(categorys);
+    console.log(`3:Main Array:`);
     console.log(objects);
+    console.log(`4:Sub Categorys:`);
+    console.log(object2s);
+    console.log(`End of Input-----------------------------------------`);
+    var objectss = <?php echo json_encode($objectss); ?>;
+    console.log('Output data: ')
+    console.log(`1:Recommdation List`);
+    console.log(objectss);
+    console.log(`End of Output-----------------------------------------`);
+    console.log(`User Behaviors----------------------------------------`);
+    console.log(`Interest: ${behaviors.interest}%        Location: ${behaviors.location}%`);
+    console.log(`End of User Behaviors---------------------------------`);
+    console.log(`User Interests----------------------------------------`);
+    var zero = <?php echo json_encode($zero); ?>;
+    console.log(`Music: ${zero}%`);
+    var one = <?php echo json_encode($one); ?>;
+    console.log(`Sport: ${one}%`);
+    var two = <?php echo json_encode($two); ?>;
+    console.log(`Clothing: ${two}%`);
+    var three = <?php echo json_encode($three); ?>;
+    console.log(`Food: ${three}%`);
+    var four = <?php echo json_encode($four); ?>;
+    console.log(`Technology: ${four}%`);
+    var five = <?php echo json_encode($five); ?>;
+    console.log(`Book: ${five}%`);
+    var six = <?php echo json_encode($six); ?>;
+    console.log(`Animal: ${six}%`);
 </script>

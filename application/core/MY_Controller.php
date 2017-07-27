@@ -276,12 +276,10 @@ class MY_Controller extends MX_Controller {
 
 	protected function render_order($objects, $user_cate, $user_behav, $object2s = NULL)
 	{
-		// print_r(sizeof($object2s));exit;
 		$interest = $user_behav['interest'];
 		$location = $user_behav['location'];
 		$orderedArr = array();
 		if($interest > $location) {
-			$this->mViewData['abc'] = 'interest';
 			foreach($objects as $object){
 				if($object->expected_location_id == $user_behav['location_id']){
 					array_push($orderedArr, $object);
@@ -297,9 +295,7 @@ class MY_Controller extends MX_Controller {
 					array_push($orderedArr, $object);
 				}
 			}
-			// print_r('298');exit;
 		} elseif($interest < $location) {
-			$this->mViewData['abc'] = 'location';
 			foreach($objects as $object){
 				if($object->expected_location_id == $user_behav['location_id']){
 					array_push($orderedArr, $object);
@@ -307,7 +303,6 @@ class MY_Controller extends MX_Controller {
 					unset($objects[$key]);
 				}
 			}
-			// print_r('308');exit;
 			foreach($objects as $object){
 				array_push($orderedArr, $object);
 			}
@@ -316,13 +311,9 @@ class MY_Controller extends MX_Controller {
 					array_push($orderedArr, $object);
 				}
 			}
-			// print_r('311');exit;
 		} else {
-			$this->mViewData['abc'] = 'same';
 			$orderedArr = array_merge($objects, $object2s);
-			// print_r('315');exit;
 		}
-		// print_r(sizeof($orderedArr));exit;
 		return $orderedArr;
 	}
 }
