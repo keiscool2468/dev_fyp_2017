@@ -133,8 +133,8 @@
     <div class="clearfix"></div>
     <br>
     <ul class="list-group">
-    <?php if(!empty($objects)){ ?>
-        <?php foreach ($objects as $object): ?>
+    <?php if(!empty($objectss)){ ?>
+        <?php foreach ($objectss as $object): ?>
             <?php if(($object->status == 'active')&&($object->user_id != $user->id)){ ?>
                 <li class="list-group-item col-sm-3" data-toggle="modal" data-target="#<?php echo $object->id; ?>">
                     <span class="badge" style="z-inde"><?php echo $object->name_en; ?></span>
