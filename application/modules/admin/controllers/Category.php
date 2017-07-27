@@ -31,7 +31,7 @@ class Category extends Admin_Controller {
 		$crud->columns('id', 'name_zh', 'name_en','category_id','img_url', 'status');
 		$crud->set_relation('category_id', 'categorys', 'name_en');	
 		$this->unset_crud_fields('created_at');
-		$crud->set_field_upload('img_url', 'assets/uploads/files');
+		// $crud->set_field_upload('img_url', 'assets/uploads/objects');
 		$this->render_crud();
 	}
 
