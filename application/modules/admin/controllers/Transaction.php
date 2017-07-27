@@ -19,7 +19,7 @@ class Transaction extends Admin_Controller {
 		$crud->set_relation('user_id_2', 'users', 'username');
 		$crud->set_relation('object_id_1', 'objects', 'name_en');	
 		$crud->set_relation('object_id_2', 'objects', 'name_en');
-		$crud->set_relation('location', 'locations', 'name_en');
+		$crud->set_relation('expected_location_id', 'locations', 'name_en');
 		$this->unset_crud_fields('created_at');
 		$this->render_crud();
 	}

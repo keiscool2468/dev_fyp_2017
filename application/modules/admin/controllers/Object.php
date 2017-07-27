@@ -19,7 +19,7 @@ class Object extends Admin_Controller {
 		$crud->set_relation('expected_location_id', 'locations', 'name_en');
 		$crud->set_relation('user_id', 'users', 'username');
 		$this->unset_crud_fields('created_at');
-		$crud->set_field_upload('img_url', 'assets/uploads/files');
+		$crud->set_field_upload('img_url', 'assets/uploads/objects');
 		$this->render_crud();
 	}
 

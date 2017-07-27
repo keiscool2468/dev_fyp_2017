@@ -55,10 +55,6 @@
 							<label for="input_fish_name" class="control-label">Description</label>
 							<input type="text" class="form-control" name="description" placeholder="Decripte it" />
 						</div>
-						<!--<div class="col-sm-12">
-							<label for="input_fish_name" class="control-label">Image</label>
-							<input type="file" class="form-control" name="img_url"/>
-						</div>-->
 						<div class="col-sm-12">
 							<label for="input_fish_name" class="control-label">Expecting Location for Barter</label>
 							<select name="location" class="form-control">	
@@ -144,17 +140,11 @@
                     <span class="badge" style="z-inde"><?php echo $object->name_en; ?></span>
                     <div class="media">
                         <div class="media-left">
-                            <?php if (!empty($object->img_url)) {  ?> <!--return to !-->
-                                <!--<img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="auto" width="auto"/>-->
-                                <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects' . '/'. $object->img_url.'.jpg'; ?>" height="100" width="100"/>
+                            <?php if (!empty($object->img_url)) {  ?>
+                                <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects' . '/'. $object->img_url; ?>" height="100" width="100"/>
                             <?php } else { ?>
                                 <img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="70" width="70"/> 
                             <?php }?>
-                        </div>
-                        <div class="media-body">
-                            <!--<h2 class="media-heading"><br><?php print_r($object->sub_category->name_en); ?></h2>-->
-                            <!--<p><?php print_r($object->description); ?></p>-->
-                            <!--<span>Post by <?php print_r($object->user->username); ?></span>-->
                         </div>
                     </div>
                 </li>
@@ -167,12 +157,6 @@
                                 <h4 class="modal-title yellow" id="myModalLabel"><?php print_r($object->name_zh); ?></h4>
                             </div>
                             <div class="modal-bodyX">
-                                <?php if (!empty($object->img_url)) {  ?><!--return to !-->
-                                    <!--<img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="70" width="70"/>-->
-                                    <!--<img class="media-object img-circle" src="<?php echo '../assets/uploads/objects' . '/'. $object->img_url; ?>" height="70" width="70"/>-->
-                                <?php } else { ?>
-                                    <!--<img class="media-object img-circle" src="<?php echo '../assets/uploads/objects'. '/' . 'no_object.jpg'; ?>" height="70" width="70"/> -->
-                                <?php }?>
                                 <table class="table">
                                     <tr>
                                         <th>中文名</th>

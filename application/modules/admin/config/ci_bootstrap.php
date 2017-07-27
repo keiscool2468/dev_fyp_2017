@@ -70,10 +70,7 @@ $config['ci_bootstrap'] = array(
 			'icon'		=> 'fa fa-apple',
 			'children'	=> array(
 				'Objects'		=> 'object',
-				'Categorys'		=> 'category',
-				'Sub-Categorys'	=> 'category/sub_category',
 				'Transactions'	=> 'transaction',
-				'Locations'		=> 'location'
 			)	
 		),
 		'user' => array(
@@ -85,6 +82,20 @@ $config['ci_bootstrap'] = array(
 				'Create'		=> 'user/create',
 				'User Groups'	=> 'user/group',
 			)
+		),
+		'cate' => array(
+			'name'		=> 'Categorys',
+			'url'		=> 'cate',
+			'icon'		=> 'fa fa-book',
+			'children'  => array(
+				'Categorys'		=> 'category',
+				'Sub-Categorys'	=> 'category/sub_category',
+			)
+		),
+		'location' => array(
+			'name'		=> 'Locations',
+			'url'		=> 'location',
+			'icon'		=> 'fa fa-map-marker'
 		),
 		'panel' => array(
 			'name'		=> 'Admin Panel',

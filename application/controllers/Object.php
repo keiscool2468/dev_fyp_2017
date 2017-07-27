@@ -42,7 +42,7 @@ class Object extends MY_Controller {
 				'name_en'							=> $this->input->post('name_en'),
 				'sub_category_id'					=> $this->input->post('sub_cate'),
 				'description'						=> $this->input->post('description'),
-				'img_url'							=> $this->input->post('sub_cate'),
+				'img_url'							=> $this->input->post('sub_cate').'.jpg',
 				'user_id'							=> $this->mUser->id,
 				'expected_location_id'				=> $this->input->post('location'),
 				'status'							=> 'active'
