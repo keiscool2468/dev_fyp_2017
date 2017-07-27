@@ -27,7 +27,7 @@ class User extends Admin_Controller {
 		{
 			$crud->add_action('Reset Password', '', 'admin/user/reset_password', 'fa fa-repeat');
 		}
-
+			$crud->add_action('User Categorys', '', 'admin/category/user_sub_category', 'fa fa-book');
 		// disable direct create / delete Frontend User
 		$crud->unset_add();
 		$crud->unset_delete();
@@ -35,7 +35,6 @@ class User extends Admin_Controller {
 		$this->mPageTitle = 'Users';
 		$this->render_crud();
 	}
-
 
 	// Create Frontend User
 	public function create()

@@ -34,5 +34,14 @@ class Category extends Admin_Controller {
 		$crud->set_field_upload('img_url', 'assets/uploads/objects');
 		$this->render_crud();
 	}
+	public function user_sub_category($user_id)
+	{
+		$crud = $this->generate_crud('users_categorys');
+		$crud->columns('category_id', 'point');
+		$this->unset_crud_fields('user_id');
+		$crud->set_relation('category_id', 'categorys', 'name_en');	
+		$crud->where('user_id', $user_id);
+		$this->render_crud();
+	}
 
 }
