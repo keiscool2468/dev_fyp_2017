@@ -23,7 +23,7 @@
                             <div class="media">
                                 <div class="media-body">
                                     <h4 class="media-heading">Request From the others!!</h4>
-                                    <?php if((!empty($transaction->object_id_1))&&(!empty($transaction->object_id_2))&&($transaction->user_2_accept == 'decline')){ ?>
+                                    <?php if((!empty($transaction->object_id_1))&&(empty($transaction->object_id_2))&&($transaction->user_2_accept == 'decline')){ ?>
                                         <form enctype="multipart/form-data" class="form-horizontal button-form" role="form" 
                                             action="transaction/acceptDecline" method="post" >
                                             <input type="hidden" class="form-control" name="transaction_id" hidden value="<?php echo $transaction->id; ?>"/>
