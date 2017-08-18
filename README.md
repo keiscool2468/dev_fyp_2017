@@ -42,11 +42,6 @@ This repository contains setup for rapid development:
 * ... more coming!
 
 
-### Demo Project
-
-A demo repository can be found from: https://github.com/waifung0207/ci_bootstrap_3_demo
-
-
 ### Server Environment
 
 Below configuration are preferred; other environments are not well-tested, but still feel free to report and issues. 
@@ -164,9 +159,6 @@ Frontend - Home:
 Admin Panel - Home: 
 
 ![](screenshots/admin_home.png "Admin Panel Home")
-
-More screenshots can be viewed from the [screenshots folder](https://github.com/waifung0207/ci_bootstrap_3/blob/master/screenshots/) under this repository.
-
 
 ### TODO
 
